@@ -35,7 +35,4 @@ public class User implements Serializable {
 
     @Column(nullable = true, unique = true)
     private String nickname;
-
-    @Column(nullable = false)
-    private String createTime;
 }
