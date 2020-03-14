@@ -44,7 +44,7 @@ public class UserController {
     @RequestMapping("/manage")
     public ModelAndView list() {
         ModelAndView mav = new ModelAndView("user/manage");
-        List<User> users = userService.getUserList();
+        List<User> users = userService.findList();
         mav.addObject("users", users);
         return mav;
     }

@@ -18,7 +18,7 @@ public interface UserService {
      * @author KyrieCao
      * @date 2020/3/14 11:27
      */
-    List<User> getUserList();
+    List<User> findList();
 
     /**
      * 通过id查询
