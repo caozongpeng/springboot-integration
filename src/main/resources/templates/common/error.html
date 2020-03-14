@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="head :: header" />
+    <title>出错啦～</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .error {
+            width: 640px;
+            text-align: center;
+            padding-bottom: 60px;
+        }
+        h1 {
+            font-size: 120px;
+        }
+    </style>
+</head>
+<body>
+<div class="error">
+    <h1>404</h1>
+    <p>错误详情: 找不到页面</p>
+</div>
+</body>
+</html>

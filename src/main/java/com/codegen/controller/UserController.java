@@ -1,10 +1,10 @@
 package com.codegen.controller;
 
+import com.codegen.core.model.ApiResponse;
 import com.codegen.model.User;
 import com.codegen.service.UserService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -15,7 +15,8 @@ import java.util.List;
  * @author KyrieCao
  * @date 2020/3/14 11:41
  */
-@Controller
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Resource
@@ -28,80 +29,62 @@ public class UserController {
      * @author KyrieCao
      * @date 2020/3/14 11:41
      */
-    @RequestMapping("/")
-    public String index() {
-        return "redirect:/list";
+    @GetMapping("/")
+    public ModelAndView index() {
+        return new ModelAndView("user/manage");
     }
 
     /**
      * 用户列表
      *
-     * @param model
      * @return java.lang.String
      * @author KyrieCao
      * @date 2020/3/14 11:42
      */
-    @RequestMapping("/list")
-    public String list(Model model) {
+    @RequestMapping("/manage")
+    public ModelAndView list() {
+        ModelAndView mav = new ModelAndView("user/manage");
         List<User> users = userService.getUserList();
-        model.addAttribute("users", users);
-        return "user/list";
-    }
-
-    /**
-     * 用户新增页面
-     *
-     * @return String
-     * @author KyrieCao
-     * @date 2020/3/14 11:42
-     */
-    @RequestMapping("/toAdd")
-    public String toAdd() {
-        return "user/userAdd";
+        mav.addObject("users", users);
+        return mav;
     }
 
     /**
      * 用户新增方法
      *
      * @param user 用户对象
-     * @return String
+     * @return ApiResponse<User>
      * @author KyrieCao
      * @date 2020/3/14 11:43
      */
-    @RequestMapping("/add")
-    public String add(User user) {
-        userService.save(user);
-        return "redirect:/list";
+    @PostMapping("/create")
+    public ApiResponse<User> create(User user) {
+        return ApiResponse.success(userService.create(user));
     }
 
     /**
-     * 用户编辑页面
-     *
-     * @param model model对象
-     * @param id    用户id
-     * @return String
+     * 通过id查询用户
+     * @param id        用户id
+     * @return ApiResponse<User>
      * @author KyrieCao
-     * @date 2020/3/14 11:44
+     * @date 2020/3/14 21:36
      */
-    @RequestMapping("/toEdit")
-    public String toEdit(Model model, Long id) {
-        User user = userService.findUserById(id);
-        model.addAttribute("user", user);
-        return "user/userEdit";
+    @GetMapping("/{id}")
+    public ApiResponse<User> finById(@PathVariable Integer id) {
+        return ApiResponse.success(userService.findById(id));
     }
 
     /**
      * 用户编辑方法
      *
      * @param user 用户对象
-     * @return String
+     * @return ApiResponse<User>
      * @author KyrieCao
      * @date 2020/3/14 11:44
      */
-    @RequestMapping("/edit")
-    public String edit(User user) {
-        userService.edit(user);
-        return "redirect:/list";
+    @PostMapping("/updateById")
+    public ApiResponse<User> updateById(User user) {
+        return ApiResponse.success(userService.updateById(user));
     }
 
     /**
@@ -112,9 +95,9 @@ public class UserController {
      * @author KyrieCao
      * @date 2020/3/14 11:45
      */
-    @RequestMapping("/delete")
-    public String delete(Long id) {
-        userService.delete(id);
-        return "redirect:/list";
+    @RequestMapping("/delete/{id}")
+    public ApiResponse delete(@PathVariable Long id) {
+        userService.deleteById(id);
+        return ApiResponse.success(null);
     }
 }

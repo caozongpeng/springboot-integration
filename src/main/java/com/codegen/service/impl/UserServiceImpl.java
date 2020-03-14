@@ -1,12 +1,11 @@
 package com.codegen.service.impl;
 
 import com.codegen.model.User;
-import com.codegen.repository.UserRepository;
+import com.codegen.dao.UserRepository;
 import com.codegen.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,22 +26,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById(long id) {
+    public User findById(long id) {
         return userRepository.findById(id);
     }
 
     @Override
-    public void save(User user) {
-        userRepository.save(user);
+    public User create(User user) {
+        return userRepository.save(user);
     }
 
     @Override
-    public void edit(User user) {
-        userRepository.save(user);
+    public User updateById(User user) {
+        return userRepository.save(user);
     }
 
     @Override
-    public void delete(long id) {
+    public void deleteById(long id) {
         userRepository.deleteById(id);
     }
 }

@@ -1,0 +1,41 @@
+html body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    text-align: center;
+    font-size: 32px;
+    line-height: 100px;
+}
+table {
+    width: 100%;
+    border-color: #4c4f5a;
+    border-collapse: collapse;
+    border-top-width: 3px;
+}
+table tr:hover {
+    background: rgba(250, 253, 255, 0.1);
+}
+table th, table td {
+    min-width: 100px;
+    padding: 8px 12px;
+    text-align: left;
+}
+table td:last-child {
+    text-align: center;
+}
+table th {
+    background: #4c4f5a;
+    padding: 6px 12px;
+}
+table th:last-child{
+    text-align: center;
+}
+.table .opera {
+    text-align: center;
+    padding: 12px 0;
+}
+.btn-edit {
+    color: dodgerblue;
+}

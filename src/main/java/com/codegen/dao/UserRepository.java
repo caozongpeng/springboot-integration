@@ -1,4 +1,4 @@
-package com.codegen.repository;
+package com.codegen.dao;
 
 import com.codegen.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -28,7 +28,7 @@ public interface UserService {
      * @author KyrieCao
      * @date 2020/3/14 11:27
      */
-    User findUserById(long id);
+    User findById(long id);
 
     /**
      * 保存
@@ -37,7 +37,7 @@ public interface UserService {
      * @author KyrieCao
      * @date 2020/3/14 11:27
      */
-    void save(User user);
+    User create(User user);
 
     /**
      * 编辑
@@ -46,7 +46,7 @@ public interface UserService {
      * @author KyrieCao
      * @date 2020/3/14 11:27
      */
-    void edit(User user);
+    User updateById(User user);
 
     /**
      * 删除
@@ -55,5 +55,5 @@ public interface UserService {
      * @author KyrieCao
      * @date 2020/3/14 11:26
      */
-    void delete(long id);
+    void deleteById(long id);
 }
