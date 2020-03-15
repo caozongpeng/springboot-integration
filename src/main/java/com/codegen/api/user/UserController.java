@@ -2,7 +2,7 @@ package com.codegen.api.user;
 
 import com.codegen.api.BaseController;
 import com.codegen.core.model.ApiResponse;
-import com.codegen.model.User;
+import com.codegen.dao.user.model.User;
 import com.codegen.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

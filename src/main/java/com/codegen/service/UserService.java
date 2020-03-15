@@ -1,6 +1,7 @@
 package com.codegen.service;
 
-import com.codegen.model.User;
+
+import com.codegen.dao.user.model.User;
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ public interface UserService {
      * @author KyrieCao
      * @date 2020/3/14 11:27
      */
-    User create(User user);
+    int create(User user);
 
     /**
      * 编辑
@@ -46,7 +47,7 @@ public interface UserService {
      * @author KyrieCao
      * @date 2020/3/14 11:27
      */
-    User updateById(User user);
+    int updateById(User user);
 
     /**
      * 删除

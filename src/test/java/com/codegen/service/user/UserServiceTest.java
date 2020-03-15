@@ -1,6 +1,6 @@
 package com.codegen.service.user;
 
-import com.codegen.model.User;
+import com.codegen.dao.user.model.User;
 import com.codegen.service.BaseTest;
 import com.codegen.service.UserService;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,9 @@
 package com.codegen.service.impl;
 
-import com.codegen.model.User;
-import com.codegen.dao.UserRepository;
+import com.codegen.dao.user.UserMapper;
+import com.codegen.dao.user.model.User;
+import com.codegen.dao.user.model.UserExample;
+//import com.codegen.dao.UserRepository;
 import com.codegen.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,31 +19,41 @@ import java.util.List;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
+//    @Autowired
+//    private UserRepository userRepository;
     @Autowired
-    private UserRepository userRepository;
+    private UserMapper userMapper;
+
 
     @Override
     public List<User> findList() {
-        return userRepository.findAll();
+//        return userRepository.findAll();
+        UserExample example = new UserExample();
+        return userMapper.selectByExample(example);
+
     }
 
     @Override
     public User findById(long id) {
-        return userRepository.findById(id);
+//        return userRepository.findById(id);
+        return userMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public User create(User user) {
-        return userRepository.save(user);
+    public int create(User user) {
+//        return userRepository.save(user);
+        return userMapper.insertSelective(user);
     }
 
     @Override
-    public User updateById(User user) {
-        return userRepository.save(user);
+    public int updateById(User user) {
+//        return userRepository.save(user);
+        return userMapper.updateByPrimaryKey(user);
     }
 
     @Override
     public void deleteById(long id) {
-        userRepository.deleteById(id);
+//        userRepository.deleteById(id);
+        userMapper.deleteByPrimaryKey(id);
     }
 }
