@@ -1,5 +1,6 @@
-package com.codegen.controller;
+package com.codegen.api.user;
 
+import com.codegen.api.BaseController;
 import com.codegen.core.model.ApiResponse;
 import com.codegen.model.User;
 import com.codegen.service.UserService;
@@ -20,7 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @Api(tags = "用户模块接口")
-public class UserController {
+public class UserController extends BaseController {
 
     @Resource
     private UserService userService;
