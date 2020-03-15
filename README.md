@@ -10,6 +10,10 @@
 * 其他：lombok
 
 
+### application.properties、application.yml使用
+* 当使用`application.properties`的时候将 `application.yml`的内容全部注释掉
+* 当使用`application.yml`的时候将 `application.properties`的内容全部注释掉
+
 ### swagger-ui、swagger-bootstrap-ui 使用
 当需要使用`swagger-ui`原生ui的时候把pom.xml的依赖打开注释掉`swagger-bootstrap-ui`依赖即可,访问路径为 主机:端口/swagger-ui.html
 ```xml

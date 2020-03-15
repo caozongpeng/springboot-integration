@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="common/head :: header" />
+    <title>Thanks !!!</title>
+    <link rel="stylesheet" th:href="@{/styles/index.css}" />
+</head>
+<body>
+<div class="config">
+    <h1>感谢使用懒猴子CG构建SpringBoot框架</h1>
+    <ul>
+        <li><label>持久层</label><span>MyBatis</span> <span>SpringJPA</span></li>
+        <li><label>视图层</label><span>JSP</span> <span>thymeleaf</span></li>
+        <li><label>单元测试</label><span>JUnit</span></li>
+        <li><label>Swagger</label><span>有(采用Swagger-UI)</span> <span>有(采用Swagger-Bootstrap-UI)</span></li>
+        <li><label>Lombok</label><span>有</span></li>
+        <li><label>示例代码</label><span>有</span><a th:href="@{/user/manage}" target="_blank">查看示例功能</a></li>
+        <li><label>数据库</label><span>懒猴子CG示例数据库</span></li>
+    </ul>
+</div>
+</body>
+</html>
