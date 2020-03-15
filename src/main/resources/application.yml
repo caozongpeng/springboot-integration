@@ -1,27 +1,31 @@
-#server:
-#  port: 8080
-#
-#spring:
-#  # 数据源
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
-#    username: root
-#    password: root
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#  jpa:
-#    properties:
-#      hibernate:
-#        # format一下sql进行输出
-#        format_sql: true
-#        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-#        hbm2ddl:
-#          auto: update
-#    # sql输出
-#    show-sql: true
-#  # 配置 swagger-ui.html和doc.html 所在的静态资源目录
-#  resources:
-#    static-locations: classpath:/META-INF/resources/,classpath:/META-INF/resources/webjars/,classpath:/resources/, classpath:/static/, classpath:/public/
-## Swagger
-#swagger:
-#  disabled: false
-#  redirect-uri: / # 禁用swagger时的重定向地址
+server:
+  port: 8080
+
+spring:
+  # 数据源
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        # format一下sql进行输出
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        hbm2ddl:
+          auto: update
+    # sql输出
+    show-sql: true
+  # 配置 swagger-ui.html和doc.html 所在的静态资源目录
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/META-INF/resources/webjars/,classpath:/resources/, classpath:/static/, classpath:/public/
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+# Swagger
+swagger:
+  disabled: false
+  redirect-uri: / # 禁用swagger时的重定向地址
