@@ -3,6 +3,7 @@ package com.codegen.controller;
 import com.codegen.core.model.ApiResponse;
 import com.codegen.model.User;
 import com.codegen.service.UserService;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 

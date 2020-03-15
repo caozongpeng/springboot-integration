@@ -18,4 +18,11 @@ spring:
           auto: update
     # sql输出
     show-sql: true
+  # 配置 swagger-ui.html和doc.html 所在的静态资源目录
+  resources:
+    static-locations: classpath:/META-INF/resources/
 
+# Swagger
+swagger:
+  disabled: false
+  redirect-uri: / # 禁用swagger时的重定向地址

@@ -9,3 +9,24 @@
 * 配置文件：Properties、YAML
 * 其他：lombok
 
+
+### swagger-ui、swagger-bootstrap-ui 使用
+当需要使用`swagger-ui`原生ui的时候把pom.xml的依赖打开注释掉`swagger-bootstrap-ui`依赖即可,访问路径为 主机:端口/swagger-ui.html
+```xml
+<!-- swagger-ui  -->
+<dependency>
+  <groupId>io.springfox</groupId>
+  <artifactId>springfox-swagger-ui</artifactId>
+  <version>${swagger.version}</version>
+</dependency>
+```
+当需要使用`swagger-bootstrap-ui`ui的时候把pom.xml的依赖打开注释掉`swagger-ui`依赖即可,访问路径为 主机:端口/doc.html
+```xml
+<!-- swagger-bootstrap-ui  -->
+<dependency>
+  <groupId>com.github.xiaoymin</groupId>
+  <artifactId>swagger-bootstrap-ui</artifactId>
+  <version>${swagger.bootstrap-ui.version}</version>
+</dependency>
+```
+
