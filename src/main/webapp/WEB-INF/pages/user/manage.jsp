@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<html>
 <head>
-    <th:block th:include="common/head :: header" />
+    <%@include file="../common/head.jsp"%>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>用户列表</title>
-    <link rel="stylesheet" th:href="@{/styles/user/manage.css}">
+    <link rel="stylesheet" href="${staticPath}/styles/user/manage.css">
 </head>
 <body>
 <div class="content-wrap">
@@ -21,17 +23,19 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="user : ${users}">
-                <td scope="row" th:text="${user.id}"></td>
-                <td th:text="${user.username}"></td>
-                <td th:text="${user.password}"></td>
-                <td th:text="${user.nickname}"></td>
-                <td th:text="${user.email}"></td>
-                <td>
-                    <a href="javascript:;" class="btn-edit" th:data-id="${user.id}">编辑</a>
-                    <a href="javascript:;" class="btn-delete" th:data-id="${user.id}">删除</a>
-                </td>
-            </tr>
+            <c:forEach items="${users}" var="user">
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.username}</td>
+                    <td>${user.password}</td>
+                    <td>${user.nickname}</td>
+                    <td>${user.email}</td>
+                    <td>
+                        <a href="javascript:;" class="btn-edit" data-id="${user.id}">编辑</a>
+                        <a href="javascript:;" class="btn-delete" data-id="${user.id}">删除</a>
+                    </td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
         <div class="opera">
@@ -104,27 +108,27 @@
                 $('#createDialog [name=password]').val('');
                 $('#createDialog [name=nickname]').val('');
                 $('#createDialog [name=email]').val('');
-                $('#createDialog').addClass('show');
+                $('#createDialog').addClass('show')
             });
             // 确认添加
             $('#createDialog .btn-confirm').click(function() {
-                createUser();
+                createUser()
             });
             // 编辑用户
             $('.btn-edit').click(function() {
-                initEditor($(this).data('id'));
+                initEditor($(this).data('id'))
             });
             // 确认编辑
             $('#editDialog .btn-confirm').click(function() {
-                updateUser();
+                updateUser()
             });
             // 取消创建、编辑
             $('.btn-cancel').click(function() {
-                $('.dialog').removeClass('show');
+                $('.dialog').removeClass('show')
             });
             // 删除用户
             $('.btn-delete').click(function() {
-                deleteById($(this).data('id'));
+                deleteById($(this).data('id'))
             });
         }
         // 创建用户

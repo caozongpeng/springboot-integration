@@ -1,0 +1,103 @@
+html {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+html body {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(#4c4f5a,#202125);
+}
+html * {
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: Arial,sans-serif;
+    color: #f7f7f7;
+    letter-spacing: 1px;
+    outline: none;
+    box-sizing: border-box;
+}
+.margin-left {
+    margin-left: 8px;
+}
+.content-wrap {
+    background: #FFF;
+    width: 1120px;
+    margin: 0 auto;
+    border-left: 2px solid #4c4f5a;
+    border-right: 1px solid #4c4f5a;
+    padding: 0 30px;
+    min-height: 100%;
+    box-shadow: 0 0 10px -2px #202125;
+    background: rgba(76, 79, 90, 0.3);
+}
+.button {
+    border: 0;
+    padding: 6px 20px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    color: #333;
+}
+.button.normal {
+    background: dodgerblue;
+    color: #FFF;
+}
+.dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    display: none;
+}
+.dialog.show {
+    display: flex;
+}
+.dialog .dialog-body {
+    width: 500px;
+    min-height: 200px;
+    max-height: 80%;
+    overflow-y: auto;
+    border-radius: 8px;
+    position: relative;
+    background: rgba(76, 79, 90, 0.9);
+    box-shadow: 0 0 10px -2px #000;
+}
+.dialog h3, .dialog .opera {
+    padding: 0 12px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: rgba(32, 33, 37, 0.6);
+}
+.dialog .opera {
+    text-align: right;
+}
+.dialog .content {
+    padding: 8px 12px;
+}
+.prop {
+    margin-bottom: 16px;
+}
+.prop dt {
+    line-height: 26px;
+}
+.prop input[type=text] {
+    width: 100%;
+    padding: 10px 8px;
+    border: 1px solid rgba(32, 33, 37, 0.6);
+    border-radius: 4px;
+    background: rgba(250, 253, 255, 0.1);
+}
+.prop input[type=radio] {
+    margin-right: 8px;
+    margin-left: 3px;
+}

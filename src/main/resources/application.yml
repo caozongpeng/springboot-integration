@@ -21,10 +21,12 @@ spring:
   # 配置 swagger-ui.html和doc.html 所在的静态资源目录
   resources:
     static-locations: classpath:/META-INF/resources/,classpath:/META-INF/resources/webjars/,classpath:/resources/, classpath:/static/, classpath:/public/
+  # 使用jsp的时候需要打开,使用thymeleaf注释掉
   mvc:
     view:
-      prefix: /
       suffix: .jsp
+      prefix: /WEB-INF/pages/
+
 # Swagger
 swagger:
   disabled: false

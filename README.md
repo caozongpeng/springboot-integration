@@ -9,6 +9,48 @@
 * 配置文件：Properties、YAML
 * 其他：lombok
 
+### JSP、thymeleaf 使用
+* 使用`jsp`的时候修改`pom.xml`文件
+```xml
+# 注释掉thymeleaf依赖
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+
+# 加入jsp相关依赖
+<!-- 添加servlet依赖模块 -->
+<dependency>
+  <groupId>javax.servlet</groupId>
+  <artifactId>javax.servlet-api</artifactId>
+  <scope>provided</scope>
+</dependency>
+<!-- 添加jstl标签库依赖模块 -->
+<dependency>
+  <groupId>javax.servlet</groupId>
+  <artifactId>jstl</artifactId>
+</dependency>
+<!-- 使用jsp引擎，springboot内置tomcat没有此依赖 -->
+<dependency>
+  <groupId>org.apache.tomcat.embed</groupId>
+  <artifactId>tomcat-embed-jasper</artifactId>
+  <scope>provided</scope>
+</dependency>
+```
+修改`application.xml`或者`application.preoperties`
+```
+# 将该注释打开
+mvc:
+  view:
+    suffix: .jsp
+    prefix: /WEB-INF/pages/
+
+## 将该注释打开
+spring.mvc.view.prefix=/WEB-INF/pages/
+spring.mvc.view.suffix=.jsp
+```
+* 使用`thymeleaf`的时候则相反,打开`thymeleaf`依赖，注释掉jsp相关依赖,`application.xml`和`application.preoperties`注释mvc相关的配置。
+
 
 ### application.properties、application.yml使用
 * 当使用`application.properties`的时候将 `application.yml`的内容全部注释掉
