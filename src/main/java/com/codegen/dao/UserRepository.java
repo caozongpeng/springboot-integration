@@ -18,7 +18,7 @@ public interface UserRepository  {
      * @author KyrieCao
      * @date 2020/3/14 11:30
      */
-    User findById(long id);
+    User findById(Integer id);
 
     /**
      * 通过id删除
