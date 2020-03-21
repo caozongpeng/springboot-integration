@@ -15,21 +15,23 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>用户名</th>
-                <th>密码</th>
                 <th>昵称</th>
+                <th>性别</th>
                 <th>邮箱</th>
+                <th>手机号码</th>
+                <th>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${users}" var="user">
+            <c:forEach items="${userList}" var="user">
                 <tr>
                     <td>${user.id}</td>
-                    <td>${user.username}</td>
-                    <td>${user.password}</td>
                     <td>${user.nickname}</td>
+                    <td>${user.sex == 1 ? '男' : '女'}</td>
                     <td>${user.email}</td>
+                    <td>${user.mobile}</td>
+                    <td>${user.createTime}</td>
                     <td>
                         <a href="javascript:;" class="btn-edit" data-id="${user.id}">编辑</a>
                         <a href="javascript:;" class="btn-delete" data-id="${user.id}">删除</a>
@@ -47,20 +49,23 @@
             <h3>创建用户</h3>
             <form class="content">
                 <dl class="prop">
-                    <dt>用户名</dt>
-                    <dd><input type="text" name="username" placeholder="请输入用户名" maxlength="10" /></dd>
+                    <dt>昵称</dt>
+                    <dd><input type="text" name="nickname" placeholder="请输入昵称" maxlength="10" /></dd>
                 </dl>
                 <dl class="prop">
-                    <dt>密码</dt>
-                    <dd><input type="text" name="password" placeholder="请输入密码" maxlength="10" /></dd>
+                    <dt>性别</dt>
+                    <dd>
+                        <label>男</label><input type="radio" name="sex" value="1" />
+                        <label>女</label><input type="radio" name="sex" value="0" checked/>
+                    </dd>
                 </dl>
                 <dl class="prop">
                     <dt>邮箱</dt>
                     <dd><input type="text" name="email" placeholder="请输入昵称" maxlength="20" /></dd>
                 </dl>
                 <dl class="prop">
-                    <dt>昵称</dt>
-                    <dd><input type="text" name="nickname" placeholder="请输入昵称" maxlength="10" /></dd>
+                    <dt>手机号码</dt>
+                    <dd><input type="text" name="mobile" placeholder="请输入昵称" maxlength="11" /></dd>
                 </dl>
             </form>
             <div class="opera">
@@ -75,20 +80,23 @@
             <form class="content">
                 <input name="id" type="hidden">
                 <dl class="prop">
-                    <dt>用户名</dt>
-                    <dd><input type="text" name="username" placeholder="请输入用户名" maxlength="10" /></dd>
+                    <dt>昵称</dt>
+                    <dd><input type="text" name="nickname" placeholder="请输入昵称" maxlength="10" /></dd>
                 </dl>
                 <dl class="prop">
-                    <dt>密码</dt>
-                    <dd><input type="text" name="password" placeholder="请输入密码" maxlength="10" /></dd>
+                    <dt>性别</dt>
+                    <dd>
+                        <label>男</label><input type="radio" name="sex" value="1" />
+                        <label>女</label><input type="radio" name="sex" value="0" checked/>
+                    </dd>
                 </dl>
                 <dl class="prop">
                     <dt>邮箱</dt>
                     <dd><input type="text" name="email" placeholder="请输入昵称" maxlength="20" /></dd>
                 </dl>
                 <dl class="prop">
-                    <dt>昵称</dt>
-                    <dd><input type="text" name="nickname" placeholder="请输入昵称" maxlength="10" /></dd>
+                    <dt>手机号码</dt>
+                    <dd><input type="text" name="mobile" placeholder="请输入昵称" maxlength="11" /></dd>
                 </dl>
             </form>
             <div class="opera">
@@ -104,10 +112,10 @@
         function initEvents() {
             // 添加用户
             $('#btnCreateUser').click(function() {
-                $('#createDialog [name=username]').val('');
-                $('#createDialog [name=password]').val('');
-                $('#createDialog [name=nickname]').val('');
-                $('#createDialog [name=email]').val('');
+                $('#createDialog [name=nickname]').val('')
+                $('#createDialog [name=sex][value="0"]').attr('checked', true)
+                $('#createDialog [name=email]').val('')
+                $('#createDialog [name=mobile]').val('')
                 $('#createDialog').addClass('show')
             });
             // 确认添加
@@ -134,10 +142,10 @@
         // 创建用户
         function createUser() {
             var param = {
-                'username': $('#createDialog [name=username]').val().trim(),
-                'password': $('#createDialog [name=password]').val().trim(),
                 'nickname': $('#createDialog [name=nickname]').val().trim(),
-                'email': $('#createDialog [name=email]').val().trim()
+                'sex': $('#createDialog [name=sex]:checked').val(),
+                'email': $('#createDialog [name=email]').val().trim(),
+                'mobile': $('#createDialog [name=mobile]').val().trim()
             };
             $.post(basePath + '/user/create', param, function(resp) {
                 if (resp.success) {
@@ -151,12 +159,12 @@
         function initEditor (id) {
             $.get(basePath + '/user/' + id, function(resp) {
                 if (resp.success) {
-                    $('#editDialog [name=id]').val(resp.data.id);
-                    $('#editDialog [name=username]').val(resp.data.username);
-                    $('#editDialog [name=password]').val(resp.data.password);
-                    $('#editDialog [name=nickname]').val(resp.data.nickname);
-                    $('#editDialog [name=email]').val(resp.data.email);
-                    $('#editDialog').addClass('show');
+                    $('#editDialog [name=id]').val(resp.data.id)
+                    $('#editDialog [name=nickname]').val(resp.data.nickname)
+                    $('#editDialog [name=sex][value=' + resp.data.sex + ']').attr('checked', true)
+                    $('#editDialog [name=email]').val(resp.data.email)
+                    $('#editDialog [name=mobile]').val(resp.data.mobile)
+                    $('#editDialog').addClass('show')
                     return
                 }
                 alert('初始化编辑数据失败')
@@ -166,10 +174,10 @@
         function updateUser() {
             var param = {
                 'id': $('#editDialog [name=id]').val().trim(),
-                'username': $('#editDialog [name=username]').val().trim(),
-                'password': $('#editDialog [name=password]').val().trim(),
                 'nickname': $('#editDialog [name=nickname]').val().trim(),
-                'email': $('#editDialog [name=email]').val().trim()
+                'sex': $('#editDialog [name=sex]:checked').val(),
+                'email': $('#editDialog [name=email]').val().trim(),
+                'mobile': $('#editDialog [name=mobile]').val().trim()
             };
             $.post(basePath + '/user/updateById', param, function(resp) {
                 if (resp.success) {

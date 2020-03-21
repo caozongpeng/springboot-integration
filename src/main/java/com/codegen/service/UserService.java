@@ -29,7 +29,7 @@ public interface UserService {
      * @author KyrieCao
      * @date 2020/3/14 11:27
      */
-    User findById(long id);
+    User findById(Integer id);
 
     /**
      * 保存
@@ -56,5 +56,5 @@ public interface UserService {
      * @author KyrieCao
      * @date 2020/3/14 11:26
      */
-    void deleteById(long id);
+    void deleteById(Integer id);
 }

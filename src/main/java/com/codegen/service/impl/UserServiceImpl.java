@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(long id) {
+    public User findById(Integer id) {
 //        return userRepository.findById(id);
         return userMapper.selectByPrimaryKey(id);
     }
@@ -48,11 +48,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updateById(User user) {
 //        return userRepository.save(user);
-        return userMapper.updateByPrimaryKey(user);
+        return userMapper.updateByPrimaryKeySelective(user);
     }
 
     @Override
-    public void deleteById(long id) {
+    public void deleteById(Integer id) {
 //        userRepository.deleteById(id);
         userMapper.deleteByPrimaryKey(id);
     }

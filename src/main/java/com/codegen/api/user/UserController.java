@@ -51,7 +51,7 @@ public class UserController extends BaseController {
     public ModelAndView list() {
         ModelAndView mav = new ModelAndView("user/manage");
         List<User> users = userService.findList();
-        mav.addObject("users", users);
+        mav.addObject("userList", users);
         return mav;
     }
 
@@ -106,7 +106,7 @@ public class UserController extends BaseController {
      */
     @GetMapping("/delete/{id}")
     @ApiOperation("删除用户")
-    public ApiResponse<?> delete(@PathVariable Long id) {
+    public ApiResponse<?> delete(@PathVariable Integer id) {
         userService.deleteById(id);
         return ApiResponse.success(null);
     }
