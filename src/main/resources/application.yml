@@ -1,3 +1,3 @@
-#spring:
-#  profiles:
-#    active: mybatis
+spring:
+  profiles:
+    active: mybatis
