@@ -21,15 +21,15 @@ import java.io.IOException;
 @Component
 public class SwaggerInterceptor implements HandlerInterceptor {
 
-    @Value("${swagger.disabled}")
+    @Value("${swagger.enabled:false}")
     private Boolean disabledSwagger;
 
-    @Value("${swagger.redirect-uri}")
+    @Value("${swagger.redirect-uri:/}")
     private String redirectUri;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        if (disabledSwagger) {
+        if (!disabledSwagger) {
             String uri = request.getContextPath();
             if (StringUtils.isNotBlank(redirectUri))
                 uri = request.getContextPath() + redirectUri;
