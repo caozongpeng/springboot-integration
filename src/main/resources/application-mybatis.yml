@@ -44,6 +44,10 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true # 使用resultType时自动将下划线转为驼峰命名
 
+# 日志配置
+logback:
+  level: INFO
+  appender: ${project.env}
 # dao层的日志设置为debug，方便查看sql
 logging:
   level:
