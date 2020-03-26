@@ -37,12 +37,12 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
       <!--打war包排队内置tomcat-->
-      <exclusions>
+      <!--<exclusions>
         <exclusion>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-tomcat</artifactId>
         </exclusion>
-      </exclusions>
+      </exclusions>-->
     </dependency>
 
     <dependency>
@@ -121,11 +121,11 @@
     </dependency>
 
     <!-- 添加servlet依赖模块 -->
-    <dependency>
+    <!--<dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <scope>provided</scope>
-    </dependency>
+    </dependency>-->
     <!-- 添加jstl标签库依赖模块 -->
     <!--<dependency>
       <groupId>javax.servlet</groupId>

@@ -94,6 +94,13 @@ pom.xml修改
 	</exclusion>
   </exclusions>
 </dependency>
+
+<!-- 添加servlet依赖模块 -->
+<dependency>
+  <groupId>javax.servlet</groupId>
+  <artifactId>javax.servlet-api</artifactId>
+  <scope>provided</scope>
+</dependency>
 ```
 启动类修改
 ```java
