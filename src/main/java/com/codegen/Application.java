@@ -11,14 +11,15 @@ import org.springframework.core.env.Environment;
 
 /**
  * 启动类
- *
+ * 打war包需要继承 SpringBootServletInitializer 重写 configure 方法
  * @author KyrieCao
  * @date 2020/3/14 11:04
  */
 @Slf4j
 @SpringBootApplication
 @MapperScan("com.codegen.dao")
-public class Application extends SpringBootServletInitializer {
+//public class Application extends SpringBootServletInitializer {
+public class Application {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(Application.class);
@@ -34,8 +35,8 @@ public class Application extends SpringBootServletInitializer {
         log.info("====================================================================");
     }
 
-    @Override
+   /* @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(Application.class);
-    }
+    }*/
 }
