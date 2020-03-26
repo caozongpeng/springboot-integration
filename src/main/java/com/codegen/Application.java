@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 
@@ -16,7 +18,7 @@ import org.springframework.core.env.Environment;
 @Slf4j
 @SpringBootApplication
 @MapperScan("com.codegen.dao")
-public class Application {
+public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(Application.class);
@@ -30,5 +32,10 @@ public class Application {
         log.info("Swagger: {}", Boolean.parseBoolean(env.getProperty("swagger.enabled")) ? "启用" : "禁用");
         log.info("Startup complete ...");
         log.info("====================================================================");
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(Application.class);
     }
 }
