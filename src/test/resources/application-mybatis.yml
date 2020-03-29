@@ -1,0 +1,54 @@
+## 项目信息配置
+project:
+  name: Codegen
+  version: 1.0.0
+  env: development
+
+server:
+  port: 8080
+
+spring:
+  # 数据源
+  datasource:
+    url: jdbc:mysql://rm-bp15iscz0t1m98qk8o.mysql.rds.aliyuncs.com:3306/db_demo?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: cg_demo
+    password: cg_demo
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  # 配置 swagger-ui.html和doc.html 所在的静态资源目录
+  resources:
+  # thymeleaf
+    static-locations: classpath:/META-INF/resources/, classpath:/META-INF/resources/webjars/, classpath:/static/
+  thymeleaf:
+    cache: true
+  # 使用jsp的时候需要打开,使用thymeleaf注释掉
+#    static-locations: classpath:/META-INF/resources/, classpath:/META-INF/resources/webjars/
+#  mvc:
+#    view:
+#      suffix: .jsp
+#      prefix: /WEB-INF/pages/
+
+# Swagger配置
+swagger:
+  host:
+  title: ${project.name}接口文档
+  description: ${project.name}接口文档
+  enabled: false
+  # 禁用swagger时的重定向地址
+  redirect-uri: /
+
+# MyBatis配置
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml #对应mappers映射xml文件的所在路径
+  configuration:
+    map-underscore-to-camel-case: true # 使用resultType时自动将下划线转为驼峰命名
+
+# 日志配置
+logback:
+  level: INFO
+  appender: ${project.env}
+# dao层的日志设置为debug，方便查看sql
+logging:
+  level:
+    com.codegen.dao: debug

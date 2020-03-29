@@ -1,10 +1,14 @@
 package com.codegen.service.impl;
 
+import com.codegen.core.model.PageData;
+import com.codegen.core.utils.MyBatisUtil;
 import com.codegen.dao.user.UserMapper;
 import com.codegen.dao.user.model.User;
 import com.codegen.dao.user.model.UserExample;
 //import com.codegen.dao.UserRepository;
 import com.codegen.service.UserService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +28,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+
+    @Override
+    public PageData<User> findPage(User user, PageData<User> page, String orderByClause) {
+        PageHelper.startPage(page.getPage(), page.getCapacity());
+        UserExample example = MyBatisUtil.toExample(user, UserExample.class);
+        example.setOrderByClause(orderByClause);
+        return PageData.from(new PageInfo(userMapper.selectByExample(example)));
+    }
 
     @Override
     public List<User> findList() {

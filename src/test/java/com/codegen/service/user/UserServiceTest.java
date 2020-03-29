@@ -1,5 +1,6 @@
 package com.codegen.service.user;
 
+import com.codegen.core.model.PageData;
 import com.codegen.dao.user.model.User;
 import com.codegen.service.BaseTest;
 import com.codegen.service.UserService;
@@ -24,6 +25,13 @@ public class UserServiceTest extends BaseTest {
 
     @Autowired
     private UserService userService;
+
+    @Test
+    public void findPageTest() {
+        User user = new User();
+        user.setEmail("864655735@qq.com");
+        System.out.println((userService.findPage(user, new PageData(1, 20), "id desc")));
+    }
 
     @Test
     public void findListTest() {
